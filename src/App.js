@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import openAi from './lib/openai';
+import Markdown from 'react-markdown';
 
 const prompt = `
 あなたは20年以上のキャリアがあるフルスタックエンジニアです
@@ -54,7 +55,9 @@ function App() {
           </button>
         </div>
         <div className="flex flex-col w-1/2 h-full items-center justify-center">
-          <div className="p-4 overflow-y-auto w-full">{isLoading ? 'レビュー中...' : result}</div>
+          <div className="p-4 overflow-y-auto w-full">
+            {isLoading ? 'レビュー中...' : <Markdown className="markdown">{result}</Markdown>}
+          </div>
         </div>
       </main>
     </div>
